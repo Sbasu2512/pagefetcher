@@ -7,10 +7,14 @@ const fs = require('fs');
  console.log(fp);
 
  request(URL,(error,response, body) =>{
-   let byteCounter = body.length;
-   fs.writeFile(URL,fp,()=>{
-    console.log (`downloaded ${byteCounter} bytes & saved the file to ${fp}`);
-   })
+   if(error){
+    console.log(`Oopsie, we hit a snag 😞. Please check back soon  😀`)
+   }else{
+    let byteCounter = body.length;
+    fs.writeFile(URL,fp,()=>{
+     console.log (`downloaded ${byteCounter} bytes & saved the file to ${fp}`);
+    })
+   }
  })
  
  
